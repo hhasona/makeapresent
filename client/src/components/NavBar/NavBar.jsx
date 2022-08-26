@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { FaBars, FaTimes } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import i18next from "i18next"
 import cookies from "js-cookie"
-import Logo from "../assets/logo.png"
+import Logo from "../../assets/logo.png"
 
 const languages = [
   {
@@ -20,16 +20,10 @@ const languages = [
 ]
 
 function NavBar() {
-  const currentLanguageCode = cookies.get("i18next") || "ar"
-  const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
   const { t } = useTranslation()
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
 
-  useEffect(() => {
-    console.log("Setting page stuff")
-    document.title = t("app_title")
-  }, [currentLanguage, t])
   const links =
     cookies.get("i18next") === "ar"
       ? [
@@ -48,6 +42,11 @@ function NavBar() {
             name: "من نحن",
             link: "about-us",
           },
+          {
+            id: 4,
+            name: "التسجيل",
+            link: "auth",
+          },
         ]
       : [
           {
@@ -65,12 +64,20 @@ function NavBar() {
             name: "אודות",
             link: "about-us",
           },
+          {
+            id: 4,
+            name: "הרשמה",
+            link: "auth",
+          },
         ]
   return (
-    <div className="flex justify-between items-center w-full h-20 text-[#353535] fixed bg-white px-4">
+    <div className="flex justify-between items-center w-full h-20 text-[#353535] fixed bg-white px-4 z-10">
       <img
-        onClick={() => navigate("/")}
-        className="ml-2 w-[10%]  hover:cursor-pointer"
+        onClick={() => {
+          i18next.changeLanguage("ar")
+          navigate("/")
+        }}
+        className="ml-2 sm:w-[10%] w-40  hover:cursor-pointer"
         src={Logo}
         alt="logo"
       />
@@ -88,31 +95,30 @@ function NavBar() {
       </ul>
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="sm:hidden cursor-pointer pr-4 z-10 text-gray-500"
+        className="sm:hidden cursor-pointer pr-4 z-40 text-gray-500"
       >
         {isOpen ? <FaTimes size={30} /> : <FaBars size={30} />}
       </div>
       <div className="md:flex items-center justify-between hidden">
-        <ul className="hidden md:flex">
+        <ul className="hidden md:flex ">
           {languages.map(({ code, name, country_code }) => (
-            <>
+            <div className="flex" key={country_code}>
               <li
                 className="px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 duration-200"
                 onClick={() => {
                   i18next.changeLanguage(code)
                 }}
-                key={country_code}
               >
                 {name}
               </li>
               <span>|</span>
-            </>
+            </div>
           ))}
         </ul>
       </div>
       {isOpen && (
         <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500">
-          {links.map(({ id, link }) => (
+          {links.map(({ id, link, name }) => (
             <li
               key={id}
               onClick={() => {
@@ -121,9 +127,26 @@ function NavBar() {
               }}
               className="px-4 cursor-pointer capitalize py-6 text-4xl"
             >
-              {link}
+              {name}
             </li>
           ))}
+          <ul className="flex absolute bottom-10">
+            {languages.map(({ code, name, country_code }) => (
+              <>
+                <li
+                  className="px-4 cursor-pointer font-medium text-gray-500 hover:scale-105 duration-200"
+                  onClick={() => {
+                    i18next.changeLanguage(code)
+                    navigate(`/${code}`)
+                  }}
+                  key={country_code}
+                >
+                  {name}
+                </li>
+                <span>|</span>
+              </>
+            ))}
+          </ul>
         </ul>
       )}
     </div>

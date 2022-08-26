@@ -7,7 +7,8 @@ import i18next from "i18next"
 import { initReactI18next } from "react-i18next"
 import HttpApi from "i18next-http-backend"
 import LanguageDetector from "i18next-browser-languagedetector"
-
+import { Provider } from "react-redux"
+import { store } from "./app/store"
 i18next
   .use(HttpApi)
   .use(LanguageDetector)
@@ -31,9 +32,11 @@ const loadingMarkup = (
 )
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
-  <Suspense fallback={loadingMarkup}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Suspense>
+  <Provider store={store}>
+    <Suspense fallback={loadingMarkup}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Suspense>
+  </Provider>
 )

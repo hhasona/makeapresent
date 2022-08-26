@@ -1,5 +1,7 @@
-import Mugs from "../assets/mugs.png"
+import Mugs from "../../assets/mugs.png"
+import { useTranslation } from "react-i18next"
 export default function HomeSection() {
+  const { t } = useTranslation()
   return (
     <div
       name="home"
@@ -10,12 +12,7 @@ export default function HomeSection() {
           <h2 className="text-4xl sm:text-7xl font-bold text-white">
             I'm a Full Stack Developer
           </h2>
-          <p className="text-gray-500 py-4 max-w-md">
-            I'm a junior full stack developer with a passion for creating
-            beautiful and user-friendly websites. I'm independent and I'm always
-            looking for new challenges to learn and grow. My current focus is on
-            React and Node.js.
-          </p>
+          <p className="text-gray-500 py-4 max-w-md">{t("app_title")}</p>
 
           <div>
             {/* <Link

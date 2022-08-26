@@ -1,7 +1,9 @@
 import "./App.css"
-import NavBar from "./components/NavBar"
+import { Routes, Route, Navigate } from "react-router-dom"
+import NavBar from "./components/NavBar/NavBar"
 import Home from "./pages/Home"
-import { Routes, Route } from "react-router-dom"
+import Auth from "./pages/Auth"
+import SignupPage from "./pages/Signup"
 
 function App() {
   return (
@@ -9,6 +11,8 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" exact element={<Home />} />
+        <Route path="/auth" exact element={<Auth />} />
+        <Route path="/auth/sign-up" exact element={<SignupPage />} />
       </Routes>
     </>
   )

@@ -2,5 +2,19 @@
   "app_title": "عنوان",
   "language": "اللغة",
   "welcome_message": "اهلا بكم",
-  "days_since_release": "لقد مرت {{number_of_days}} أيام على إصدار هذا الفيديو"
+  "days_since_release": "لقد مرت {{number_of_days}} أيام على إصدار هذا الفيديو",
+  "sign_in_title": "تسجيل الدوخول",
+  "email": "البريد الاكتروني",
+  "password": "كلمة المرور",
+  "remember_me": "تذكرني",
+  "sign_in_button": "تسجيل الدخول",
+  "dont_have_account": "لا يوجد لديك حساب؟ تسجيل جديد",
+  "forgot_password": "فقدت كلمه المرور؟",
+  "copyright": "الحقوق محفوظه",
+  "sign_up_title": "تسجيل جديد",
+  "first_name_sign_up": "الاسم",
+  "last_name_sign_up": "العائله",
+  "sign_up_button": "تسجيل",
+  "already_have_account": "لديك حساب؟ تسجيل دوخول",
+  "descrepiton_home": ""
 }

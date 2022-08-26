@@ -2,5 +2,19 @@
   "app_title": "כותרת",
   "language": "שפה",
   "welcome_message": "שלום לכם",
-  "days_since_release": "עבור {{number_of_days}} ימים על השקת הסרטון הזה"
+  "days_since_release": "עבור {{number_of_days}} ימים על השקת הסרטון הזה",
+  "sign_in_title": "התחברות",
+  "email": "אימייל",
+  "password": "סיסמה",
+  "remember_me": "זכור אותי",
+  "sign_in_button": "הרשמה",
+  "dont_have_account": "אין לך חשבון? צור אחד חדש",
+  "forgot_password": "שכחתי סיסמה",
+  "copyright": "זכויות יוצרים",
+  "sign_up_title": "הרשמה",
+  "first_name_sign_up": "שם פרטי",
+  "last_name_sign_up": "שם משפחה",
+  "sign_up_button": "הרשמה",
+  "already_have_account": "יש לך חשבון? התחבר",
+  "descrepiton_home": ""
 }
