@@ -8,6 +8,10 @@ import Box from "@mui/material/Box"
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
 import Typography from "@mui/material/Typography"
 import { useTranslation } from "react-i18next"
+import { useNavigate } from "react-router-dom"
+import { FaTimes } from "react-icons/fa"
+import Photo from "../../assets/printify-register.jpeg"
+
 import "./style.css"
 function Copyright(props) {
   const { t } = useTranslation()
@@ -30,6 +34,7 @@ function Copyright(props) {
 
 export default function SignUp() {
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const handleSubmit = (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
@@ -40,19 +45,23 @@ export default function SignUp() {
   }
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gradient-to-b from-[#353535] via-[#BDBBB0] to-[#8A897C]">
+    <div className="h-screen w-screen flex items-center">
+      <FaTimes
+        className="absolute top-2 left-2 hover:cursor-pointer"
+        size={20}
+        onClick={() => navigate("/")}
+      />
+      <div className="hidden md:block md:w-2/4 mr-5">
+        <img src={Photo} alt="photoo" className="w-full h-full" />
+      </div>
       <Box
-        className="box"
+        className="box mx-auto"
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          backgroundColor: "white",
           justifyContent: "space-evenly",
-          height: "80vh",
-          width: "25vw",
-          borderRadius: "25px",
-          marginTop: "7vh",
+          height: "100vh",
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
@@ -62,7 +71,7 @@ export default function SignUp() {
           {t("sign_up_title")}
         </Typography>
         <Box
-          className="w-[60%]"
+          className="md:w-[60%]"
           component="form"
           noValidate
           onSubmit={handleSubmit}
@@ -120,9 +129,9 @@ export default function SignUp() {
           >
             {t("sign_up_button")}
           </Button>
-          <Grid container justifyContent="flex-end">
+          <Grid container justifyContent="flex-start">
             <Grid item>
-              <Link href="/auth" variant="body2">
+              <Link href="/app/login" variant="body2">
                 {t("already_have_account")}
               </Link>
             </Grid>

@@ -14,6 +14,9 @@ import { useTranslation } from "react-i18next"
 import { loginUser } from "../../app/actions/login-user-actions"
 import LoadingSpinner from "../LoadingSpinner"
 import { useNavigate } from "react-router-dom"
+import { FaTimes } from "react-icons/fa"
+import Photo from "../../assets/printify-register.jpeg"
+
 import "./style.css"
 
 function Copyright(props) {
@@ -56,19 +59,23 @@ export default function Login() {
   }
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gradient-to-b from-[#353535] via-[#BDBBB0] to-[#8A897C]">
+    <div className="h-screen w-screen flex items-center">
+      <FaTimes
+        className="absolute top-2 left-2 hover:cursor-pointer"
+        size={20}
+        onClick={() => navigate("/")}
+      />
+      <div className="hidden md:block md:w-2/4 mr-5">
+        <img src={Photo} alt="photoo" className="w-full h-full" />
+      </div>
       <Box
-        className="box"
+        className="box mx-auto"
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          backgroundColor: "white",
           justifyContent: "space-evenly",
-          height: "80vh",
-          width: "25vw",
-          borderRadius: "25px",
-          marginTop: "7vh",
+          height: "100vh",
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
@@ -78,7 +85,7 @@ export default function Login() {
           {t("sign_in_title")}
         </Typography>
         <Box
-          className="w-[60%]"
+          className="md:w-[60%]"
           component="form"
           onSubmit={handleSubmit}
           noValidate
@@ -111,6 +118,7 @@ export default function Login() {
             autoComplete="current-password"
           />
           <FormControlLabel
+            className="!mr-0"
             control={<Checkbox value="remember" color="primary" />}
             label={t("remember_me")}
           />
@@ -142,7 +150,7 @@ export default function Login() {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/auth/sign-up" variant="body2">
+              <Link href="/app/register" variant="body2">
                 {t("dont_have_account")}
               </Link>
             </Grid>

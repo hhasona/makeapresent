@@ -16,5 +16,6 @@
   "last_name_sign_up": "العائله",
   "sign_up_button": "تسجيل",
   "already_have_account": "لديك حساب؟ تسجيل دوخول",
-  "descrepiton_home": ""
+  "home_title": "اصنع تصميمك واطبعه على منتجاتك",
+  "home_descrepiton": ["إستعمال بسيط", "منتجات بجوده عاليه", "توصيل حتى البيت"]
 }
